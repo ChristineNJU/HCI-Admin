@@ -3,7 +3,7 @@
  */
 import dva,{connect} from 'dva';
 import React, { Component } from 'react';
-import { Modal, Input,InputNumber,Select,Switch,Upload,Button,Icon,notification,message } from 'antd';
+import { Modal, Input,Select,Button,Icon,Popconfirm,message } from 'antd';
 const {Option} = Select;
 import styles from '../routes/IndexPage.css';
 
@@ -56,6 +56,18 @@ class TypeModal extends Component {
     message.success('顺序调整成功！');
   };
 
+  deleteType = (key,name) =>{
+    let {dispatch} = this.props;
+    dispatch({
+      type:'menu/deleteType',
+      payload:{
+        key:key,
+        name:name
+      }
+    },message.success('分类删除成功！'));
+
+  };
+
   render() {
     const { children } = this.props;
     const { dispatch }= this.props;
@@ -86,11 +98,12 @@ class TypeModal extends Component {
           visible={this.state.visible}
           footer={[<div></div>]}
           onCancel={this.hideModelHandler}
+          width='400px'
         >
           {
             arr.map((item) => {
-              return <SingleType name={item.type} order={item.order} length={arr.length}
-                                 orderUp={this.orderUp} orderDown={this.orderDown}/>})
+              return <SingleType name={item.type} order={item.order} length={arr.length} keyNum={item.key}
+                                 orderUp={this.orderUp} orderDown={this.orderDown} deleteType={this.deleteType}/>})
           }
 
           <AddType addType={addType}/>
@@ -133,9 +146,9 @@ let AddType = React.createClass({
         {this.state.showAdd
           ?
           <div className={styles.singleTypeWrapper}>
-            <Input size="small" className={styles.typeName} style={{'width':'220px'}}
+            <Input size="small" className={styles.typeName} style={{'width':'120px'}}
                     value={this.state.name} onChange={this.inputChange}/>
-            <div style={{'marginRight':'120px'}}>
+            <div style={{'marginRight':'50px'}}>
               <Button onClick={this.toggle}>取消</Button> &nbsp;
               <Button type="primary" onClick={this.addNewType}>确定添加</Button>
             </div>
@@ -149,17 +162,31 @@ let AddType = React.createClass({
 });
 
 let SingleType = React.createClass({
+
+  getInitialState(){
+    return{
+     // showInout:0,
+    }
+  },
+
   render(){
-    if(this.props.name === '全部'){
+    if(this.props.name === '全部' || this.props.name === '其他'){
       return <div></div>
     }
     return(
       <div className={styles.singleTypeWrapper}>
-        <Input defaultValue={this.props.name} value={this.props.name}
-               size="small" className={styles.typeName} style={{'width':'220px'}}/>
+        <p className={styles.typeName} style={{'width':'220px'}}
+           size="small" >{this.props.name}</p>
         <div>
+
+          <Popconfirm title="你确定要删除这个分类吗？改分类下所有菜品将转到'其他'类别中。"
+                      onConfirm={()=>this.props.deleteType(this.props.keyNum,this.props.name)}
+                      onCancel={{}} okText="Yes" cancelText="No">
+          <Button><Icon type="delete"/></Button>&nbsp;
+          </Popconfirm>
+
           {
-            this.props.order != 1?
+            this.props.order != 2?
                <Button onClick={() => this.props.orderUp(this.props.name)}><Icon type="up"/></Button>
               : <Button disabled><Icon type="up"/></Button>
           }
@@ -167,7 +194,7 @@ let SingleType = React.createClass({
           &nbsp;
 
           {
-            this.props.order != this.props.length -1 ?
+            this.props.order != this.props.length - 1 ?
               <Button  onClick={() => this.props.orderDown(this.props.name)}><Icon type="down"/></Button>
               :<Button disabled><Icon type="down"/></Button>
 

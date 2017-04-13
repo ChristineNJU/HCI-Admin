@@ -11,17 +11,20 @@ export default {
       status:'全部',
       keyword:'',
     },
+    typeNum:11,
     types:[
-      {type:'全部',num:90,order:0},
-      {type:'主菜',num:10,order:1},
-      {type:'刺身',num:10,order:2},
-      {type:'前菜',num:10,order:3},
-      {type:'沙拉',num:10,order:4},
-      {type:'炸物',num:10,order:5},
-      {type:'烤物',num:10,order:6},
-      {type:'煮物',num:10,order:7},
-      {type:'蒸物',num:10,order:8},
-      {type:'铁板烧',num:10,order:9}],
+      {key:0,type:'全部',num:90,order:0},
+      {key:1,type:'其他',num:0,order:1},
+      {key:2,type:'主菜',num:8,order:2},
+      {key:3,type:'刺身',num:10,order:3},
+      {key:4,type:'前菜',num:10,order:4},
+      {key:5,type:'沙拉',num:10,order:5},
+      {key:6,type:'炸物',num:9,order:6},
+      {key:7,type:'烤物',num:10,order:7},
+      {key:8,type:'煮物',num:10,order:8},
+      {key:9,type:'蒸物',num:10,order:9},
+      {key:10,type:'铁板烧',num:10,order:10},
+      ],
   },
   reducers: {
     initResult(state,{payload:{initFood}}){
@@ -75,7 +78,30 @@ export default {
     addType(state,{payload:{typeName}}){
       let newType = {type:typeName,num:0,order:state.types.length};
       let newTypes = state.types.concat(newType);
-      return {...state,types:newTypes}
+      return {...state,types:newTypes,typeNum:state.typeNum+1}
+    },
+    deleteType(state,{payload:{key,name}}){
+
+      let newList = state.allFood.slice(0);
+      let newTypes = state.types.slice(0);
+      newList.forEach((item)=>{
+        if( item.type == name){
+          item.type = '其他';
+          newTypes[1].num++;
+        }
+      });
+
+      let index = newTypes.indexOf(newTypes.find((item) => {
+        return item.key == key;
+      }));
+      if(index > -1){
+        newTypes.splice(index,1);
+      }
+      for(let i = index;i < newTypes.length;i++){
+        newTypes[i].order = newTypes[i].order -1;
+      }
+      //TODO
+      return {...state,allFood:newList,types:newTypes,typeNum:state.typeNum-1};
     },
     orderChange(state,{payload:{name,order}}){
       let newTypes = state.types.concat();
