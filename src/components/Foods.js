@@ -112,8 +112,37 @@ function Foods({dispatch,foods}) {
 
 
 function mapStateToProps(state){
-  // console.log(state.menu.foodShow);
-  return {foods:state.menu.foodShow}
+  const {allFood,filter} = state.menu;
+  const {type,status,keyword} = filter;
+  let foodShow = allFood.slice(0);
+  if(keyword != ''){
+    foodShow = foodShow.filter((item,index,arr)=>{
+      return item.name.indexOf(keyword) >= 0;
+    })
+  }else{
+    foodShow = foodShow.filter((food,index,arr)=>{
+      if(type == '全部' || type == food.type){
+        if(status == '售罄'){
+          return food.soldOut
+        }
+        if(status == '推荐'){
+          return food.recommend
+        }
+        if(status == '会员特价'){
+          return food.price != food.priceVip
+        }
+        if(status == '停用'){
+          return !food.inUse
+        }
+        if(status == '全部'){
+          return true;
+        }
+      }
+    })
+  }
+
+
+  return {foods:foodShow}
 }
 
 module.exports = connect(mapStateToProps)(Foods);

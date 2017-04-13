@@ -5,7 +5,7 @@ export default {
   namespace: 'menu',
   state: {
     allFood:[],
-    foodShow:[],
+    foodNum:null,
     filter:{
       type:'全部',
       status:'全部',
@@ -25,17 +25,16 @@ export default {
   },
   reducers: {
     initResult(state,{payload:{initFood}}){
-      return {...state,allFood:initFood,foodShow:initFood}
+      return {...state,allFood:initFood,foodNum:initFood.length}
     },
     addFood(state,{payload}){
-      console.log(payload.values);
+      let newFood = payload.values;
+      newFood['key'] = state.foodNum;
       let newAll = state.allFood.concat(payload.values);
-      return {...state,allFood:newAll};
+      return {...state,allFood:newAll,foodNum:state.foodNum+1};
     },
     soldOutChange(state,{payload:{name}}){
       console.log('sold out change',name);
-
-      // let newAllFood =
 
       return {...state};
     },
@@ -44,36 +43,11 @@ export default {
       return {...state};
     },
     changeFilter(state,{payload:{type,status}}){
-      let foodResult = state.allFood.concat();
-      foodResult = foodResult.filter((food) =>{
-        if(food.type == type || type=='全部'){
-          if(status == '售罄'){
-            return food.soldOut
-          }
-          if(status == '推荐'){
-            return food.recommend
-          }
-          if(status == '会员特价'){
-            return food.price != food.priceVip
-          }
-          if(status == '停用'){
-            return !food.inUse
-          }
-          if(status == '全部'){
-            return true;
-          }
-        }
-      });
-      return {...state,filter:{status:status,type:type,keyword:''},foodShow:foodResult}
+      return {...state,filter:{status:status,type:type,keyword:''}}
     },
     changeKeyword(state,{payload:{keyword}}){
       let newFilter = {keyword:keyword,type:'全部',status:'全部'};
-      let foodResult = state.allFood.filter((food) => {
-        if (food.name.indexOf(keyword) > -1) {
-          return true;
-        }
-      });
-      return {...state,filter:newFilter,foodShow:foodResult};
+      return {...state,filter:newFilter};
     },
     addType(state,{payload:{typeName}}){
       let newType = {type:typeName,num:0,order:state.types.length};

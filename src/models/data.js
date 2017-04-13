@@ -6,6 +6,7 @@ module.exports = {
     '主菜','刺身','前菜','寿司','沙拉','炸物','烤物','煮物','蒸物','铁板烧'
   ],
   foods:[{
+    key:1,
     name:'Miso便当',
     type:'主菜',
     price:23,
@@ -14,6 +15,7 @@ module.exports = {
     soldOut:true,
     recommend:true,
   },{
+    key:2,
     name:'三文鱼生鱼片丼饭',
     type:'主菜',
     price:33,
@@ -22,6 +24,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:3,
     name:'吉列豬排套餐',
     type:'主菜',
     price:22,
@@ -30,6 +33,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:4,
     name:'天妇罗烧锅',
     type:'主菜',
     price:24,
@@ -38,6 +42,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:5,
     name:'寿喜烧锅',
     type:'主菜',
     price:43,
@@ -46,6 +51,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:6,
     name:'日式豆腐',
     type:'主菜',
     price:25,
@@ -54,6 +60,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:7,
     name:'照烧牛肉',
     type:'主菜',
     price:34,
@@ -62,6 +69,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:8,
     name:'白萝卜泥炸猪排套餐',
     type:'主菜',
     price:24,
@@ -70,6 +78,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:9,
     name:'冰塔刺身',
     type:'刺身',
     price:55,
@@ -78,6 +87,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:10,
     name:'冰镇金枪鱼刺身',
     type:'刺身',
     price:34,
@@ -86,6 +96,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:11,
     name:'刺身拼盘两人份',
     type:'刺身',
     price:67,
@@ -94,6 +105,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:12,
     name:'刺身拼盤',
     type:'刺身',
     price:88,
@@ -102,6 +114,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:13,
     name:'愛媛縣油甘魚刺身',
     type:'刺身',
     price:65,
@@ -110,6 +123,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:14,
     name:'海膽雙魚刺身飯',
     type:'刺身',
     price:55,
@@ -118,6 +132,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:15,
     name:'混合刺身',
     type:'刺身',
     price:67,
@@ -126,6 +141,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:16,
     name:'縞鰺刺身',
     type:'刺身',
     price:45,
@@ -134,6 +150,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:17,
     name:'金枪鱼刺身饭',
     type:'刺身',
     price:34,
@@ -142,6 +159,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:18,
     name:'頂級黑鮪魚刺身',
     type:'刺身',
     price:67,
@@ -150,6 +168,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:19,
     name:'Perfume of the Earth',
     type:'前菜',
     price:34,
@@ -158,7 +177,8 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
-  name:'三文魚醬青瓜杯',
+    key:20,
+    name:'三文魚醬青瓜杯',
     type:'前菜',
     price:32,
     priceVip:32,
@@ -166,6 +186,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:21,
     name:'串間甘藷',
     type:'前菜',
     price:33,
@@ -174,6 +195,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:22,
     name:'刺身盛合',
     type:'前菜',
     price:34,
@@ -182,6 +204,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:23,
     name:'厚切鴨肝佐蘋果味噌',
     type:'前菜',
     price:34,
@@ -190,6 +213,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:24,
     name:'宜蘭傳統鴨賞清蒜起司',
     type:'前菜',
     price:45,
@@ -198,6 +222,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:25,
     name:'煙三文魚酸忌廉法包',
     type:'前菜',
     price:21,
@@ -206,6 +231,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:26,
     name:'蒜蓉焗虾',
     type:'前菜',
     price:45,
@@ -214,6 +240,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:27,
     name:'香煎鵪鶉奶油麵&時魚奶油麵',
     type:'前菜',
     price:54,
@@ -222,6 +249,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:28,
     name:'馬祖黑殼淡菜',
     type:'前菜',
     price:34,
@@ -230,6 +258,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:29,
     name:'三文鱼寿司',
     type:'寿司',
     price:44,
@@ -238,6 +267,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:30,
     name:'三文鱼虾滑寿司',
     type:'寿司',
     price:34,
@@ -246,6 +276,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:31,
     name:'握寿司组（6枚）',
     type:'寿司',
     price:34,
@@ -254,6 +285,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:32,
     name:'握寿司组（8枚）',
     type:'寿司',
     price:45,
@@ -262,6 +294,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:33,
     name:'炙燒鮭魚握壽司',
     type:'寿司',
     price:23,
@@ -270,6 +303,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:34,
     name:'虾握寿司',
     type:'寿司',
     price:45,
@@ -278,6 +312,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:35,
     name:'醃燻鮭魚起司卷',
     type:'寿司',
     price:34,
@@ -286,6 +321,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:36,
     name:'鮭魚卵寿司',
     type:'寿司',
     price:35,
@@ -294,6 +330,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:37,
     name:'鱼子酱手握',
     type:'寿司',
     price:34,
@@ -302,6 +339,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:38,
     name:'黄瓜握寿司',
     type:'寿司',
     price:23,
@@ -310,6 +348,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:39,
     name:'夏威夷炙燒鮪魚沙拉',
     type:'沙拉',
     price:56,
@@ -318,6 +357,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:40,
     name:'德式蔬菜沙拉',
     type:'沙拉',
     price:45,
@@ -326,6 +366,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:41,
     name:'混合水果沙拉',
     type:'沙拉',
     price:34,
@@ -334,6 +375,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:42,
     name:'玉米沙拉',
     type:'沙拉',
     price:32,
@@ -342,6 +384,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:43,
     name:'田園燻雞沙拉',
     type:'沙拉',
     price:37,
@@ -350,6 +393,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:44,
     name:'米香沙拉',
     type:'沙拉',
     price:29,
@@ -358,6 +402,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:45,
     name:'苹果沙拉',
     type:'沙拉',
     price:21,
@@ -366,6 +411,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:46,
     name:'虾仁轻食沙拉',
     type:'沙拉',
     price:27,
@@ -374,6 +420,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:47,
     name:'蜂蜜優格水果沙拉',
     type:'沙拉',
     price:21,
@@ -382,6 +429,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:48,
     name:'鮭魚蔬果沙拉',
     type:'沙拉',
     price:33,
@@ -390,6 +438,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:49,
     name:'丽海牛蛙',
     type:'炸物',
     price:34,
@@ -398,6 +447,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:50,
     name:'可乐饼',
     type:'炸物',
     price:23,
@@ -406,6 +456,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:51,
     name:'土豆饼',
     type:'炸物',
     price:21,
@@ -414,6 +465,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:52,
     name:'洋葱圈',
     type:'炸物',
     price:14,
@@ -422,6 +474,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:53,
     name:'炸扇贝',
     type:'炸物',
     price:29,
@@ -430,6 +483,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:54,
     name:'炸猪排',
     type:'炸物',
     price:32,
@@ -438,6 +492,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:55,
     name:'炸鱿鱼',
     type:'炸物',
     price:30,
@@ -446,6 +501,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:56,
     name:'美式炸物',
     type:'炸物',
     price:27,
@@ -454,6 +510,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:57,
     name:'鸡米花',
     type:'炸物',
     price:21,
@@ -462,6 +519,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:58,
     name:'开片烤鱼',
     type:'烤物',
     price:14,
@@ -470,6 +528,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:59,
     name:'日式刀鱼',
     type:'烤物',
     price:20,
@@ -478,6 +537,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:60,
     name:'日式小烤',
     type:'烤物',
     price:24,
@@ -486,6 +546,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:61,
     name:'烤牛肉',
     type:'烤物',
     price:29,
@@ -494,6 +555,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:62,
     name:'烤生蚝',
     type:'烤物',
     price:23,
@@ -502,6 +564,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:63,
     name:'烤虾姑',
     type:'烤物',
     price:33,
@@ -510,6 +573,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:64,
     name:'烤青鱼',
     type:'烤物',
     price:32,
@@ -518,6 +582,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:65,
     name:'烤香肠',
     type:'烤物',
     price:14,
@@ -526,6 +591,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:66,
     name:'烤鳗鱼',
     type:'烤物',
     price:18,
@@ -534,6 +600,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:67,
     name:'芝士烤虾',
     type:'烤物',
     price:24,
@@ -542,6 +609,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:68,
     name:'乃求c肝',
     type:'煮物',
     price:31,
@@ -550,6 +618,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:69,
     name:'什锦煮物',
     type:'煮物',
     price:28,
@@ -558,6 +627,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:70,
     name:'帝王蟹',
     type:'煮物',
     price:32,
@@ -566,6 +636,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:71,
     name:'怀石鱼片',
     type:'煮物',
     price:32,
@@ -574,6 +645,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:72,
     name:'水煮鱼',
     type:'煮物',
     price:28,
@@ -582,6 +654,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:73,
     name:'海水茄子',
     type:'煮物',
     price:22,
@@ -590,6 +663,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:74,
     name:'章鱼丸',
     type:'煮物',
     price:18,
@@ -598,6 +672,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:75,
     name:'里芋煮物',
     type:'煮物',
     price:16,
@@ -606,6 +681,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:76,
     name:'雪蛤',
     type:'煮物',
     price:25,
@@ -614,6 +690,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:77,
     name:'鸡蛋豆腐',
     type:'煮物',
     price:17,
@@ -622,6 +699,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:78,
     name:'全家福',
     type:'蒸物',
     price:44,
@@ -630,6 +708,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:79,
     name:'凤凰豆腐',
     type:'蒸物',
     price:34,
@@ -638,6 +717,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:80,
     name:'安永鲜物',
     type:'蒸物',
     price:34,
@@ -646,6 +726,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:81,
     name:'春雨润物',
     type:'蒸物',
     price:13,
@@ -654,6 +735,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:82,
     name:'清蒸鲈鱼',
     type:'蒸物',
     price:18,
@@ -662,6 +744,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:83,
     name:'粉蒸排骨',
     type:'蒸物',
     price:22,
@@ -670,6 +753,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:84,
     name:'蒜蓉蒸扇贝',
     type:'蒸物',
     price:24,
@@ -678,6 +762,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:85,
     name:'蒜蓉蒸虾',
     type:'蒸物',
     price:34,
@@ -686,6 +771,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:86,
     name:'蒸肠粉',
     type:'蒸物',
     price:39,
@@ -694,6 +780,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:87,
     name:'蒸鱼头',
     type:'蒸物',
     price:44,
@@ -702,6 +789,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:88,
     name:'招牌铁板烧',
     type:'铁板烧',
     price:34,
@@ -710,6 +798,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:89,
     name:'月影法式',
     type:'铁板烧',
     price:35,
@@ -718,6 +807,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:90,
     name:'法式铁板',
     type:'铁板烧',
     price:24,
@@ -726,6 +816,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:91,
     name:'混血铁板',
     type:'铁板烧',
     price:26,
@@ -734,6 +825,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:92,
     name:'铁板包菜',
     type:'铁板烧',
     price:19,
@@ -742,6 +834,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:93,
     name:'铁板烧肉',
     type:'铁板烧',
     price:29,
@@ -750,6 +843,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:94,
     name:'铁板虾',
     type:'铁板烧',
     price:31,
@@ -758,6 +852,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:95,
     name:'铁板虾球',
     type:'铁板烧',
     price:30,
@@ -766,6 +861,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:96,
     name:'铁板鱿鱼',
     type:'铁板烧',
     price:30,
@@ -774,6 +870,7 @@ module.exports = {
     soldOut:false,
     recommend:false,
   },{
+    key:0,
     name:'飞扬铁板烧',
     type:'铁板烧',
     price:28,
