@@ -3,22 +3,12 @@
  */
 import dva,{connect} from 'dva';
 import React, { Component } from 'react';
-import { Modal, Input,InputNumber,Select,Switch,Upload,Button,Icon,notification } from 'antd';
+import { Modal, Input,InputNumber,Select,Switch,Upload,Button,Icon,notification,message } from 'antd';
 const {Option} = Select;
 import styles from '../routes/IndexPage.css';
 
 
 class TypeModal extends Component {
-
-
-  openNotificationWithIcon (type) {
-    return function () {
-      notification[type]({
-        message: '分类编辑成功',
-        // description: '这是提示框的文案这是提示框示框的文案这是提示是提示框的文案这是提示框的文案'
-      });
-    };
-  }
 
   constructor(props) {
     super(props);
@@ -40,9 +30,34 @@ class TypeModal extends Component {
     });
   };
 
+
+  orderUp = (name) => {
+    console.log('order up');
+    let {dispatch} = this.props;
+    dispatch({
+      type:'menu/orderChange',
+      payload:{
+        name:name,
+        order:'up'
+      }
+    });
+    message.success('顺序调整成功！');
+  };
+
+  orderDown = (name) =>{
+    let {dispatch} = this.props;
+    dispatch({
+      type:'menu/orderChange',
+      payload:{
+        name:name,
+        order:'down'
+      }
+    });
+    message.success('顺序调整成功！');
+  };
+
   render() {
     const { children } = this.props;
-    console.log(this.props);
     const { dispatch }= this.props;
     function addType(name) {
       dispatch({
@@ -52,6 +67,16 @@ class TypeModal extends Component {
         }
       })
     }
+    let arr = this.props.types;
+    arr.sort((a,b)=>{
+      if (a.order < b.order) {
+        return -1;
+      } else {
+        return 1;
+      }
+    });
+    console.log(arr);
+
     return (
       <span>
         <span onClick={this.showModelHandler}>
@@ -64,9 +89,9 @@ class TypeModal extends Component {
           onCancel={this.hideModelHandler}
         >
           {
-            this.props.types
-            .sort((a,b)=>{return a.order - b.order})
-            .map((item) => {return <SingleType name={item.type} order={item.order}/>})
+            arr.map((item) => {
+              return <SingleType name={item.type} order={item.order} length={arr.length}
+                                 orderUp={this.orderUp} orderDown={this.orderDown}/>})
           }
 
           <AddType addType={addType}/>
@@ -97,7 +122,11 @@ let AddType = React.createClass({
     })
   },
   addNewType(){
-    this.props.addType(this.state.name);
+    this.props.addType(this.state.name,this.setState({
+      showAdd:false,
+      name:'',
+    }),message.success('添加种类'+this.state.name+'成功！'));
+
   },
   render(){
     return(
@@ -114,7 +143,6 @@ let AddType = React.createClass({
           </div>
           :
           <Button onClick={this.toggle}>添加种类</Button>
-
         }
       </div>
     )
@@ -123,13 +151,29 @@ let AddType = React.createClass({
 
 let SingleType = React.createClass({
   render(){
+    if(this.props.name === '全部'){
+      return <div></div>
+    }
     return(
       <div className={styles.singleTypeWrapper}>
-        <Input defaultValue={this.props.name} size="small" className={styles.typeName}
-          style={{'width':'220px'}}/>
+        <Input defaultValue={this.props.name} value={this.props.name}
+               size="small" className={styles.typeName} style={{'width':'220px'}}/>
         <div>
-          <Button><Icon type="up" /></Button> &nbsp;
-          <Button><Icon type="down" /></Button>
+          {
+            this.props.order != 1?
+               <Button onClick={() => this.props.orderUp(this.props.name)}><Icon type="up"/></Button>
+              : <Button disabled><Icon type="up"/></Button>
+          }
+
+          &nbsp;
+
+          {
+            this.props.order != this.props.length -1 ?
+              <Button  onClick={() => this.props.orderDown(this.props.name)}><Icon type="down"/></Button>
+              :<Button disabled><Icon type="down"/></Button>
+
+          }
+
         </div>
       </div>
     )

@@ -28,8 +28,8 @@ export default {
       return {...state,allFood:initFood,foodShow:initFood}
     },
     changeFilter(state,{payload:{type,status}}){
-      let foodResult = state.allFood.filter((food) =>{
-
+      let foodResult = state.allFood.concat();
+      foodResult = foodResult.filter((food) =>{
         if(food.type == type || type=='全部'){
           if(status == '售罄'){
             return food.soldOut
@@ -60,13 +60,28 @@ export default {
       return {...state,filter:newFilter,foodShow:foodResult};
     },
     addType(state,{payload:{typeName}}){
-      console.log('111');
       let newType = {type:typeName,num:0,order:state.types.length};
-      // let newTypes = state.types;
-      // newTypes.push(newType);
       let newTypes = state.types.concat(newType);
-
       return {...state,types:newTypes}
+    },
+    orderChange(state,{payload:{name,order}}){
+      let newTypes = state.types.concat();
+      let index1 = newTypes.find((item,index,arr)=>{
+        return item.type === name;
+      }).order;
+      let index2 = order === 'up' ?index1-1:index1+1;
+      let name2 = newTypes.find((item,index,arr)=>{
+        return item.order === index2;
+      }).type;
+      for(let i = 0 ;i < newTypes.length;i++){
+        if(newTypes[i].type === name){
+          newTypes[i].order = index2;
+        }
+        if(newTypes[i].type === name2){
+          newTypes[i].order = index1;
+        }
+      }
+      return {...state,types:newTypes};
     }
   },
   effects: {

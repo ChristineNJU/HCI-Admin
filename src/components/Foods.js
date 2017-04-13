@@ -25,7 +25,8 @@ let SingleFood = React.createClass({
     const {type,name,img,price,priceVip,soldOut,recommend,inUse} = this.props.info;
     const url = "/food/"+type+"/"+name+"V.png";
     const soldOutSwitch = <Switch checkedChildren="售罄" unCheckedChildren="售罄"
-                                  defaultChecked={soldOut}
+
+                                  checked={soldOut}
                                   onChange={this.openNotificationWithIcon('success',name)}/>;
     return(
       <div className={styles.foodSingle}>
@@ -50,7 +51,7 @@ let SingleFood = React.createClass({
             <div className={styles.buttonsWrapper}>
               {soldOutSwitch}
               <Switch checkedChildren="推荐" unCheckedChildren="推荐"
-                      defaultChecked={recommend}  />
+                      checked={recommend}/>
 
             </div>
           </div>
