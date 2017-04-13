@@ -21,13 +21,12 @@ let SingleFood = React.createClass({
     };
   },
 
+
+
   render (){
     const {type,name,img,price,priceVip,soldOut,recommend,inUse} = this.props.info;
     const url = "/food/"+type+"/"+name+"V.png";
-    const soldOutSwitch = <Switch checkedChildren="售罄" unCheckedChildren="售罄"
 
-                                  checked={soldOut}
-                                  onChange={this.openNotificationWithIcon('success',name)}/>;
     return(
       <div className={styles.foodSingle}>
         <div className={styles.rowWrapper}>
@@ -52,9 +51,13 @@ let SingleFood = React.createClass({
               会员价：<span className={styles.priceSpan}>￥{priceVip} </span>
               </p>
             <div className={styles.buttonsWrapper}>
-              {soldOutSwitch}
+              <Switch checkedChildren="售罄" unCheckedChildren="售罄"
+                      checked={soldOut}
+                      onChange={() => this.props.soldOutChange(name)}/>
+
               <Switch checkedChildren="推荐" unCheckedChildren="推荐"
-                      checked={recommend}/>
+                      checked={recommend}
+                      onChange={() => this.props.recommendChange(name)}/>
 
             </div>
           </div>
@@ -67,7 +70,26 @@ let SingleFood = React.createClass({
 });
 
 
-function Foods({foods}) {
+function Foods({dispatch,foods}) {
+
+  function soldOutChange(name){
+    dispatch({
+      type:'menu/soldOutChange',
+      payload:{
+        name:name
+      }
+    })
+  }
+
+  function recommendChange(name) {
+    dispatch({
+      type:'menu/soldOutChange',
+      payload:{
+        name:name
+      }
+    })
+  }
+
   return (
     <div className={styles.foods}>
       <div className={styles.blockTitle}>
@@ -79,7 +101,8 @@ function Foods({foods}) {
       <div className={styles.foodList}>
         {foods.length == 0?<div className={styles.foodSingle}>无筛选结果</div>:''}
         {foods.map(item => {
-          return <SingleFood info={item} test="111"/>
+          return <SingleFood info={item}
+                             soldOutChange={soldOutChange} recommendChange={recommendChange}/>
         })}
 
       </div>

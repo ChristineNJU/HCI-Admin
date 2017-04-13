@@ -2,10 +2,11 @@
  * Created by christine on 2017/4/12.
  */
 import React, { Component } from 'react';
-import { Modal, Form, Input,InputNumber,Select,Switch,Upload,Button,Icon } from 'antd';
+import { Modal, Form, Input,InputNumber,Select,Switch,Upload,Button,Icon,message } from 'antd';
 const {Option} = Select;
-
+import {connect} from 'dva';
 const FormItem = Form.Item;
+
 
 class RoomModal extends Component {
 
@@ -16,6 +17,8 @@ class RoomModal extends Component {
       visible: false,
     };
   }
+
+
 
   showModelHandler = (e) => {
     if (e) e.stopPropagation();
@@ -34,8 +37,41 @@ class RoomModal extends Component {
     // const { onOk } = this.props;
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        // onOk(values);
-        this.hideModelHandler();
+        // console.log(values);
+
+        if(values.upload == ''){
+          message.error('请上传图片');
+          return;
+        }
+
+        if(values.name == ''){
+          message.error('请填写名称');
+          return;
+        }
+
+        if(values.type == ''){
+          message.error('请选择菜品类别');
+          return;
+        }
+
+        if(values.price == null){
+          message.error('请填写价格');
+          return;
+        }
+
+        if(values.priceVip == null){
+          message.error('请填写会员价格');
+          return;
+        }
+        let dispatch = this.props.dispatch;
+        dispatch({
+          type:'menu/addFood',
+          payload:{
+           values:values,
+          }
+        });
+        message.success('添加新菜'+values.name+'成功！',this.hideModelHandler());
+
       }
     });
   };
@@ -43,24 +79,22 @@ class RoomModal extends Component {
   render() {
     const { children } = this.props;
     const { getFieldDecorator } = this.props.form;
-    // const { name, email, website } = this.props.record;
-    const name='111';
-    const email='christine.zxz@gmail.com';
+    const {name,type,price,priceVip,soldOut,inUse,recommend} = this.props;
+
     const formItemLayout = {
       labelCol: { span: 6 },
       wrapperCol: { span: 14 },
     };
+
+    let img = this.props.title == '添加菜品'? null :[{uid:-1,name:name+'.png',status:'done',url:'/food/'+type+'/'+name+'V.png'}]
+
     const uploadProps = {
       action: '/upload.do',
       listType: 'picture',
-      defaultFileList: [{
-        uid: -1,
-        name: 'xxx.png',
-        status: 'done',
-        url: '/yay.jpg',
-        thumbUrl: '/yay.jpg',
-      }]
+      defaultFileList: img
     };
+
+    let types = this.props.types.slice(1);
 
     return (
       <span>
@@ -93,11 +127,15 @@ class RoomModal extends Component {
               label="菜品类别"
             >
               {getFieldDecorator('type', {
-                  initialValue: '煮物',
+                  initialValue: type,
                 })(
                   <Select>
-                  <Option value={'煮物'}>煮物</Option>
-                </Select>
+                    {types.map((item)=>{
+
+                        return <Option value={item.type}>{item.type}</Option>;
+
+                    })}
+                  </Select>
                 )}
             </FormItem>
             <FormItem
@@ -106,7 +144,7 @@ class RoomModal extends Component {
             >
               {
                 getFieldDecorator('name', {
-                  initialValue: 'Miso便当',
+                  initialValue: name,
                 })(<Input />)
               }
             </FormItem>
@@ -116,7 +154,7 @@ class RoomModal extends Component {
             >
               {
                 getFieldDecorator('price', {
-                  initialValue: 18,
+                  initialValue: price,
                 })(<InputNumber style={{'width':'100%'}}/>)
               }
             </FormItem>
@@ -126,7 +164,7 @@ class RoomModal extends Component {
             >
               {
                 getFieldDecorator('priceVip', {
-                  initialValue: 16,
+                  initialValue: priceVip,
                 })(<InputNumber style={{'width':'100%'}}/>)
               }
             </FormItem>
@@ -135,9 +173,9 @@ class RoomModal extends Component {
               label="使用菜品"
             >
               {getFieldDecorator('inUse', {
-                  initialValue: email,
+                  initialValue: inUse,
                 })(<Switch checkedChildren="使用中" unCheckedChildren="已停用"
-                           defaultChecked={true}  />)}
+                           defaultChecked={inUse}  />)}
             </FormItem>
             <FormItem
               {...formItemLayout}
@@ -156,5 +194,20 @@ class RoomModal extends Component {
   }
 }
 
-export default Form.create()(RoomModal);
+
+RoomModal.defaultProps = {
+  name:'',
+  type:'',
+  price:null,
+  priceVip:null,
+  inUse:true,
+  soldOut:false,
+  recommend:false,
+};
+
+function mapStateToProps(state) {
+  return {types:state.menu.types}
+}
+
+export default connect(mapStateToProps)(Form.create()(RoomModal));
 

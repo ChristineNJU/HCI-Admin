@@ -75,7 +75,6 @@ class TypeModal extends Component {
         return 1;
       }
     });
-    console.log(arr);
 
     return (
       <span>

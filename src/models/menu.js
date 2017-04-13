@@ -27,6 +27,22 @@ export default {
     initResult(state,{payload:{initFood}}){
       return {...state,allFood:initFood,foodShow:initFood}
     },
+    addFood(state,{payload}){
+      console.log(payload.values);
+      let newAll = state.allFood.concat(payload.values);
+      return {...state,allFood:newAll};
+    },
+    soldOutChange(state,{payload:{name}}){
+      console.log('sold out change',name);
+
+      // let newAllFood =
+
+      return {...state};
+    },
+    recommendChange(state,{payload:{name}}){
+      console.log('recommend change',name);
+      return {...state};
+    },
     changeFilter(state,{payload:{type,status}}){
       let foodResult = state.allFood.concat();
       foodResult = foodResult.filter((food) =>{
