@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7060daaf-7b9d-4720-a448-9e81f4f065e4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/TypeModal.js" afterPath="$PROJECT_DIR$/src/components/TypeModal.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/models/menu.js" afterPath="$PROJECT_DIR$/src/models/menu.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/FoodModal.js" afterPath="$PROJECT_DIR$/src/components/FoodModal.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -21,7 +19,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4303519">
+    <splitter split-orientation="horizontal" split-proportion="0.4941349">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="MenuManager.js" pinned="false" current-in-tab="false">
@@ -60,11 +58,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Foods.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Foods.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/Foods.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="161">
-                  <caret line="111" column="32" lean-forward="true" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="32" />
+                <state relative-caret-position="86">
+                  <caret line="106" column="10" lean-forward="true" selection-start-line="106" selection-start-column="10" selection-end-line="106" selection-end-column="10" />
                   <folding>
                     <element signature="e#46#72#0" expanded="true" />
                   </folding>
@@ -72,11 +70,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="TypeModal.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="TypeModal.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/components/TypeModal.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="479">
-                  <caret line="196" column="55" lean-forward="true" selection-start-line="196" selection-start-column="55" selection-end-line="196" selection-end-column="55" />
+                <state relative-caret-position="269">
+                  <caret line="182" column="89" lean-forward="true" selection-start-line="182" selection-start-column="89" selection-end-line="182" selection-end-column="89" />
                   <folding>
                     <element signature="e#46#78#0" expanded="true" />
                   </folding>
@@ -100,11 +98,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="FoodModal.js" pinned="false" current-in-tab="false">
+          <file leaf-file-name="FoodModal.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/FoodModal.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="990">
-                  <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+                <state relative-caret-position="645">
+                  <caret line="170" column="66" lean-forward="false" selection-start-line="170" selection-start-column="66" selection-end-line="170" selection-end-column="66" />
                   <folding>
                     <element signature="e#46#87#0" expanded="true" />
                   </folding>
@@ -112,7 +110,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="menu.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="menu.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/models/menu.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="420">
@@ -168,9 +166,9 @@
         <option value="$PROJECT_DIR$/src/routes/IndexPage.css" />
         <option value="$PROJECT_DIR$/src/models/data.js" />
         <option value="$PROJECT_DIR$/src/components/Foods.js" />
-        <option value="$PROJECT_DIR$/src/components/FoodModal.js" />
         <option value="$PROJECT_DIR$/src/components/TypeModal.js" />
         <option value="$PROJECT_DIR$/src/models/menu.js" />
+        <option value="$PROJECT_DIR$/src/components/FoodModal.js" />
       </list>
     </option>
   </component>
@@ -452,12 +450,12 @@
       <option name="presentableId" value="Default" />
       <updated>1491802382086</updated>
       <workItem from="1491802575790" duration="31534000" />
-      <workItem from="1492061012885" duration="18459000" />
+      <workItem from="1492061012885" duration="19478000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49993000" />
+    <option name="totallyTimeSpent" value="51012000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -718,10 +716,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/menu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="80" column="61" lean-forward="false" selection-start-line="80" selection-start-column="61" selection-end-line="80" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/TypeModal.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="182" column="89" lean-forward="true" selection-start-line="182" selection-start-column="89" selection-end-line="182" selection-end-column="89" />
+          <folding>
+            <element signature="e#46#78#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Foods.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="111" column="32" lean-forward="true" selection-start-line="111" selection-start-column="32" selection-end-line="111" selection-end-column="32" />
+        <state relative-caret-position="86">
+          <caret line="106" column="10" lean-forward="true" selection-start-line="106" selection-start-column="10" selection-end-line="106" selection-end-column="10" />
           <folding>
             <element signature="e#46#72#0" expanded="true" />
           </folding>
@@ -730,29 +746,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/FoodModal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        <state relative-caret-position="645">
+          <caret line="170" column="66" lean-forward="false" selection-start-line="170" selection-start-column="66" selection-end-line="170" selection-end-column="66" />
           <folding>
             <element signature="e#46#87#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/TypeModal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="196" column="55" lean-forward="true" selection-start-line="196" selection-start-column="55" selection-end-line="196" selection-end-column="55" />
-          <folding>
-            <element signature="e#46#78#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="80" column="61" lean-forward="false" selection-start-line="80" selection-start-column="61" selection-end-line="80" selection-end-column="61" />
-          <folding />
         </state>
       </provider>
     </entry>

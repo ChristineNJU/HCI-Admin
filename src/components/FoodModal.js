@@ -67,6 +67,16 @@ class RoomModal extends Component {
     });
   };
 
+  testInput = (e) => {
+    console.log(e.key);
+    let obj = e.target;
+    obj.value = obj.value.replace(/[^\d.]/g,""); //清除"数字"和"."以外的字符
+    obj.value = obj.value.replace(/^\./g,""); //验证第一个字符是数字而不是
+    obj.value = obj.value.replace(/\.{2,}/g,"."); //只保留第一个. 清除多余的
+    obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+    obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); //只能输入两个小数
+  };
+
   render() {
     const { children } = this.props;
     const { getFieldDecorator } = this.props.form;
@@ -146,7 +156,8 @@ class RoomModal extends Component {
               {
                 getFieldDecorator('price', {
                   initialValue: price,
-                })(<InputNumber style={{'width':'100%'}}/>)
+                })(<Input style={{'width':'100%'}}
+                      onKeyUp={(e)=>this.testInput(e)}/>)
               }
             </FormItem>
             <FormItem
@@ -156,7 +167,8 @@ class RoomModal extends Component {
               {
                 getFieldDecorator('priceVip', {
                   initialValue: priceVip,
-                })(<InputNumber style={{'width':'100%'}}/>)
+                })(<Input style={{'width':'100%'}}
+                                onKeyUp={(e)=>this.testInput(e)}/>)
               }
             </FormItem>
             <FormItem
