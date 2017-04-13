@@ -4,28 +4,22 @@
 import React from 'react';
 import {connect} from 'dva';
 import styles from '../routes/IndexPage.css';
-import { Button,Switch,notification } from 'antd';
+import { Button,Switch,message } from 'antd';
 import FoodModal from './FoodModal';
 
 let SingleFood = React.createClass({
-  // console.log(info);
-  // let type = info.type;
-
   openNotificationWithIcon (type,name) {
-    // console.log(t);
     return function () {
       notification[type]({
         message: name+'置为售罄成功！',
-        // description: '这是提示框的文案这是提示框示框的文案这是提示是提示框的文案这是提示框的文案'
       });
     };
   },
 
-
-
   render (){
-    const {type,name,img,price,priceVip,soldOut,recommend,inUse} = this.props.info;
-    const url = "/food/"+type+"/"+name+"V.png";
+    const {type,name,img,price,priceVip,soldOut,recommend,inUse,key} = this.props.info;
+    // const url = "/food/"+type+"/"+name+"V.png";
+    const url = "/food/"+img+"V.png";
 
     return(
       <div className={styles.foodSingle}>
@@ -38,7 +32,8 @@ let SingleFood = React.createClass({
           <div className={styles.rowWrapper}>
             <h2>{type} - {name}</h2>
 
-            <FoodModal onOk={{}} title={'编辑菜品'}>
+            <FoodModal onOk={{}} title={'编辑菜品'} name={name} type={type} price={price} img={img}
+                       priceVip={priceVip} inUse={inUse} soldOut={soldOut} recommend={recommend} keyNum={key}>
               <Button style={{'height':'30px'}}>编辑信息</Button>
             </FoodModal>
 
@@ -53,11 +48,11 @@ let SingleFood = React.createClass({
             <div className={styles.buttonsWrapper}>
               <Switch checkedChildren="售罄" unCheckedChildren="售罄"
                       checked={soldOut}
-                      onChange={() => this.props.soldOutChange(name)}/>
+                      onChange={(e) => this.props.soldOutChange(key,e)}/>
 
               <Switch checkedChildren="推荐" unCheckedChildren="推荐"
                       checked={recommend}
-                      onChange={() => this.props.recommendChange(name)}/>
+                      onChange={(e) => this.props.recommendChange(key,e)}/>
 
             </div>
           </div>
@@ -72,22 +67,24 @@ let SingleFood = React.createClass({
 
 function Foods({dispatch,foods}) {
 
-  function soldOutChange(name){
+  function soldOutChange(key,value){
     dispatch({
       type:'menu/soldOutChange',
       payload:{
-        name:name
+        key:key,
+        value:value
       }
-    })
+    },message.success('设置售罄状态成功！'))
   }
 
-  function recommendChange(name) {
+  function recommendChange(key,value) {
     dispatch({
-      type:'menu/soldOutChange',
+      type:'menu/recommendChange',
       payload:{
-        name:name
+        key:key,
+        value:value
       }
-    })
+    },message.success('设置推荐状态成功！'))
   }
 
   return (
@@ -101,6 +98,7 @@ function Foods({dispatch,foods}) {
       <div className={styles.foodList}>
         {foods.length == 0?<div className={styles.foodSingle}>无筛选结果</div>:''}
         {foods.map(item => {
+          {/*console.log(item.key);*/}
           return <SingleFood info={item}
                              soldOutChange={soldOutChange} recommendChange={recommendChange}/>
         })}

@@ -37,41 +37,32 @@ class RoomModal extends Component {
     // const { onOk } = this.props;
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        // console.log(values);
-
-        if(values.upload == ''){
-          message.error('请上传图片');
-          return;
-        }
-
-        if(values.name == ''){
-          message.error('请填写名称');
-          return;
-        }
-
-        if(values.type == ''){
-          message.error('请选择菜品类别');
-          return;
-        }
-
-        if(values.price == null){
-          message.error('请填写价格');
-          return;
-        }
-
-        if(values.priceVip == null){
-          message.error('请填写会员价格');
-          return;
-        }
+        if(values.upload == ''){message.error('请上传图片');return;}
+        if(values.name == ''){message.error('请填写名称');return;}
+        if(values.type == ''){message.error('请选择菜品类别');return;}
+        if(values.price == null){message.error('请填写价格');return;}
+        if(values.priceVip == null){message.error('请填写会员价格');return;}
         let dispatch = this.props.dispatch;
-        dispatch({
-          type:'menu/addFood',
-          payload:{
-           values:values,
-          }
-        });
-        message.success('添加新菜'+values.name+'成功！',this.hideModelHandler());
 
+        if(this.props.title == '添加菜品'){
+          dispatch({
+            type:'menu/addFood',
+            payload:{
+              values:values,
+            }
+          });
+          message.success('添加新菜'+values.name+'成功！',this.hideModelHandler());
+        }else{
+          // console.log(this.props);
+          dispatch({
+            type:'menu/editFood',
+            payload:{
+              key:this.props.keyNum,
+              values:values,
+            }
+          });
+          message.success('编辑菜品'+values.name+'成功！',this.hideModelHandler());
+        }
       }
     });
   };
@@ -79,19 +70,19 @@ class RoomModal extends Component {
   render() {
     const { children } = this.props;
     const { getFieldDecorator } = this.props.form;
-    const {name,type,price,priceVip,soldOut,inUse,recommend} = this.props;
+    const {name,type,price,priceVip,soldOut,inUse,recommend,img} = this.props;
 
     const formItemLayout = {
       labelCol: { span: 6 },
       wrapperCol: { span: 14 },
     };
 
-    let img = this.props.title == '添加菜品'? null :[{uid:-1,name:name+'.png',status:'done',url:'/food/'+type+'/'+name+'V.png'}]
+    let imgUrl = this.props.title == '添加菜品'? null :[{uid:-1,name:name+'.png',status:'done',url:'/food/'+img+'V.png'}]
 
     const uploadProps = {
       action: '/upload.do',
       listType: 'picture',
-      defaultFileList: img
+      defaultFileList: imgUrl
     };
 
     let types = this.props.types.slice(1);

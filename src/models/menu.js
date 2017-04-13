@@ -30,17 +30,40 @@ export default {
     addFood(state,{payload}){
       let newFood = payload.values;
       newFood['key'] = state.foodNum;
+      newFood['img'] = 'new';
       let newAll = state.allFood.concat(payload.values);
       return {...state,allFood:newAll,foodNum:state.foodNum+1};
     },
-    soldOutChange(state,{payload:{name}}){
-      console.log('sold out change',name);
-
-      return {...state};
+    editFood(state,{payload:{key,values}}){
+      let newList = state.allFood.slice(0);
+      newList.forEach((item)=>{
+        if( item.key == key){
+          Object.keys(item).map((key)=>{
+            if(key != 'recommend' && key != 'soldOut' && key != 'img')
+              item[key] = values[key];
+          });
+        }
+        item['key'] = key;
+      });
+      return {...state,allFood:newList}
     },
-    recommendChange(state,{payload:{name}}){
-      console.log('recommend change',name);
-      return {...state};
+    soldOutChange(state,{payload:{key,value}}){
+      let newList = state.allFood.slice(0);
+      newList.forEach((item)=>{
+        if( item.key == key){
+          item['soldOut'] = value;
+        }
+      });
+      return {...state,allFood:newList}
+    },
+    recommendChange(state,{payload:{key,value}}){
+      let newList = state.allFood.slice(0);
+      newList.forEach((item)=>{
+        if( item.key == key){
+          item['recommend'] = value;
+        }
+      });
+      return {...state,allFood:newList}
     },
     changeFilter(state,{payload:{type,status}}){
       return {...state,filter:{status:status,type:type,keyword:''}}
