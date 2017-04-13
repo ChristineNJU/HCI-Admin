@@ -1,10 +1,20 @@
 {
   "entry": "src/index.js",
+  "disableCSSModules": false,
+  "publicPath": "/",
+  "autoprefixer": null,
+  "theme": {
+      "primary-color": "#EEAC55",
+      "link-color": "#EEAC55",
+      "@border-radius-base": "2px",
+      "@line-height-base": "1"
+  },
   "env": {
     "development": {
       "extraBabelPlugins": [
         "dva-hmr",
-        "transform-runtime"
+        "transform-runtime",
+        ["import", { "libraryName": "antd", "style": true }]
       ]
     },
     "production": {
