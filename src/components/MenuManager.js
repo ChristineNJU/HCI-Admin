@@ -12,7 +12,8 @@ export default function MenuManager () {
   return(
     <div style={{'backgroundColor':'#FAF7F5'}}>
       <div className={styles.contentWrapper}>
-        <div>
+        <div id="leftBlock"
+             style={{'position':'absolute','left':'0'}}>
           <Filters fileter="111"/>
           <FunctionGroup/>
         </div>

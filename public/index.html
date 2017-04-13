@@ -12,6 +12,7 @@
       background-color: #FAF7F5;
     }
     #root{
+      /*overflow: hidden;*/
       background-color: #FAF7F5;
     }
   </style>
@@ -21,6 +22,20 @@
 <div id="root"></div>
 
 <script src="index.js"></script>
+<script>
+  window.onscroll = function () {
 
+    let block = document.getElementById('leftBlock');
+    block.style.position = 'absolute';
+    block.style.top = window.scrollY +'px';
+    block.style.left = 0;
+//    console.log(block.style);
+//    $("#stockListWrapper").css({
+//      "position":"absolute",
+//      "top":window.scrollY+99+"px",
+//      "right":0
+//    });
+  }
+</script>
 </body>
 </html>
