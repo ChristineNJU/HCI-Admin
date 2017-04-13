@@ -8,12 +8,12 @@ import {connect} from 'dva';
 
 function FiltersWrapper({dispatch,types,filter}) {
 
-  function changeKeyword(e){
-    console.log(e.target.value);
+  function changeKeyword(value){
+    // console.log(e.target.value);
     dispatch({
       type:`menu/changeKeyword`,
       payload:{
-        keyword:e.target.value
+        keyword:value
       }
     })
   }
@@ -55,39 +55,58 @@ let Filters = React.createClass({
     }
   },
 
+  removeKeyword(){
+    this.props.changeKeyword('');
+  },
+
   render(){
     let types = this.props.types;
     let filter = this.props.filter;
+
+
+    let style= filter.keyword == '' ?
+      {'overflow': 'hidden','position':'relative'}:
+      {'overflow': 'hidden','position':'relative','filter':'grayscale(100%)'};
+
     return (
       <div className={styles.leftMenu}>
         <div className={styles.blockTitle}>
           <h1 className={styles.h1}>菜品筛选</h1>
         </div>
-        <div>
-        <Input type="text" required="required" size="large"
-               style={{'border':'none','outline':'none','paddingLeft':'10px','color':'#999'}}
-               placeholder={'输入关键字搜索'}
-               value={filter.keyword}
-               onChange={this.props.changeKeyword}/>
+        <div style={{'position':'relative'}}>
+          <Input type="text" required="required" size="large"
+                 style={{'border':'none','outline':'none','paddingLeft':'10px','color':'#999'}}
+                 className={styles.searchInput}
+                 placeholder={'输入关键字搜索'}
+                 value={filter.keyword}
+                 onChange={(e) => this.props.changeKeyword(e.target.value)}/>
+          {filter.keyword!=''?
+          <Button size="small"
+                  style={{'position':'absolute','right':'0','marginRight':'10px','marginTop':'8px','fontSize':'10px','fontWeight':'lighter'}}
+                  onClick={this.removeKeyword}>清除</Button>
+            :''}
         </div>
+
 
         <div className={styles.split}></div>
-        <p className={styles.label}>种类</p>
-        <div className={styles.typeWrapper}>
-          {types.map(item => {
-            return <TypeFilter type={item} picked={filter.type}
-                                handle={this.props.changeType}/>
+        <div style={style}>
+          {filter.keyword!=''?<div className={styles.typeMask}></div>:''}
+          <p className={styles.label}>种类</p>
+          <div className={styles.typeWrapper}>
+            {types.map(item => {
+              return <TypeFilter type={item} picked={filter.type}
+                                  handle={this.props.changeType}/>
 
-          })}
-        </div>
-        {/*<div className={styles.split}></div>*/}
-        <p className={styles.label}>状态</p>
-        <div className={styles.typeWrapper}>
-          <StatusFilter value={'全部'} picked={filter.status} handle={this.props.changeStatus}/>
-          <StatusFilter value={'售罄'} picked={filter.status} handle={this.props.changeStatus}/>
-          <StatusFilter value={'推荐'} picked={filter.status} handle={this.props.changeStatus}/>
-          <StatusFilter value={'会员特价'} picked={filter.status} handle={this.props.changeStatus}/>
-          <StatusFilter value={'停用'} picked={filter.status} handle={this.props.changeStatus}/>
+            })}
+          </div>
+          <p className={styles.label}>状态</p>
+          <div className={styles.typeWrapper}>
+            <StatusFilter value={'全部'} picked={filter.status} handle={this.props.changeStatus}/>
+            <StatusFilter value={'售罄'} picked={filter.status} handle={this.props.changeStatus}/>
+            <StatusFilter value={'推荐'} picked={filter.status} handle={this.props.changeStatus}/>
+            <StatusFilter value={'会员特价'} picked={filter.status} handle={this.props.changeStatus}/>
+            <StatusFilter value={'停用'} picked={filter.status} handle={this.props.changeStatus}/>
+          </div>
         </div>
       </div>
     )

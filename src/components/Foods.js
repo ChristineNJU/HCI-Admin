@@ -47,7 +47,10 @@ let SingleFood = React.createClass({
           </div>
 
           <div className={styles.rowWrapper}>
-            <p className={styles.price}>价格：￥{price} &nbsp;&nbsp;&nbsp;会员价：￥{priceVip}</p>
+            <p className={styles.price}>
+              价格：<span className={styles.priceSpan}>￥{price} </span> &nbsp;&nbsp;&nbsp;
+              会员价：<span className={styles.priceSpan}>￥{priceVip} </span>
+              </p>
             <div className={styles.buttonsWrapper}>
               {soldOutSwitch}
               <Switch checkedChildren="推荐" unCheckedChildren="推荐"
